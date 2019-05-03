@@ -19,8 +19,6 @@ const render = ({lines}) => {
 	})
 }
 
-const getUniqueElementId = (lineId, elementId) => `${lineId}_${elementId}`
-
 const mapIdsToTimeouts = (lines) => {
 	return lines.map((line, lineId) => {
 		const elementIds = line.elements.map((el, elementId) => getUniqueElementId(lineId, elementId))
@@ -32,6 +30,8 @@ const mapIdsToTimeouts = (lines) => {
 	})
 }
 
+const getUniqueElementId = (lineId, elementId) => `${lineId}_${elementId}`
+
 const setTimers = ({lines}) => {
 	mapIdsToTimeouts(lines).forEach(mappedIdsToTimeouts => {
 		setInterval(changeColor, mappedIdsToTimeouts.updateTime, mappedIdsToTimeouts);
@@ -41,7 +41,7 @@ const setTimers = ({lines}) => {
 const changeColor = (mappedIdsToTimeouts) => {
 	const lineAndElemntsIds = mappedIdsToTimeouts.elementIds.concat(mappedIdsToTimeouts.lineId)
 	lineAndElemntsIds.forEach(id => {
-		switchColor(id)
+		document.getElementById(id).style.background = getRandomColor();
 	})
 }
 
@@ -49,10 +49,6 @@ const getStyledDiv = velues => {
 	const el = document.createElement('div')
 	el.setAttribute('style', velues)
 	return el
-}
-
-const switchColor = (id) => {
-	document.getElementById(id).style.background = getRandomColor();
 }
 
 const getRandomColor = () => {
