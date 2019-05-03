@@ -19,18 +19,18 @@ const render = ({lines}) => {
 	})
 }
 
+const getUniqueElementId = (lineId, elementId) => `${lineId}_${elementId}`
+
 const mapIdsToTimeouts = (lines) => {
 	return lines.map((line, lineId) => {
 		const elementIds = line.elements.map((el, elementId) => getUniqueElementId(lineId, elementId))
 		return {
-			lineId: lineId,
+			lineId,
 			updateTime: line.updateTime,
-			elementIds: elementIds,
+			elementIds,
 		}
 	})
 }
-
-const getUniqueElementId = (lineId, elementId) => `${lineId}_${elementId}`
 
 const setTimers = ({lines}) => {
 	mapIdsToTimeouts(lines).forEach(mappedIdsToTimeouts => {
