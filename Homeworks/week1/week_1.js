@@ -61,7 +61,7 @@ function chunk(array, size) {
   return size <= 0 ? [] :
     Array(Math.ceil(array.length / size))
       .fill()
-      .map((empty, idx) => array.splice(0, size))
+      .map(() => array.splice(0, size))
 }
 
 chunk(['a', 'b', 'c', 'd'], 2);
