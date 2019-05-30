@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+
+    var John = {
+      name: 'John Doe',
+      bills: [100, 40, 250],
+      tips: null,
+      finalValues: null,
+      calcTipsAndValues: calcTipsAndValues,
+      getAverageTip: getAverageTip,
+    }
+
+    var Sarah = {
+      name: 'Sarah Doe',
+      bills: [80, 20, 210],
+      tips: null,
+      finalValues: null,
+      calcTipsAndValues: calcTipsAndValues,
+      getAverageTip: getAverageTip,
+    }
+
+    function calcTipsAndValues() {
+      // TODO: calc tips and finalValues arrays using this context
+      // bill <= 50 -> 20% tip
+      // 50 < bill <= 200 -> 15% tip
+      // bill > 200 -> 10% tip
+      this.tips = this.bills.map(cur => {
+        if (cur <= 50) return cur * .2;
+        if (cur <= 200) return cur * .15;
+        else return cur * .1;
+      })
+      this.finalValues = this.bills.map((cur, i) => cur + this.tips[i]);
+    }
+
+    function getAverageTip() {
+      // TODO: get tips from this context and return averageTip
+      // averageTip equals to sum of all tips divided by their amount
+      return this.tips.reduce((acc, cur) => acc + cur) / this.tips.length;
+    }
+
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

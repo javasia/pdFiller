@@ -1,0 +1,25 @@
+<html>
+  <script>
+  function calculateTips (amount){
+  const tips = []
+  const amountWithTips = []
+  let tipRate;
+  for (let i = 0; i < amount.length; i++){
+    if (amount[i] < 50 ) {
+      tipRate = 0.20
+    } 
+    else if (amount[i] < 200) {
+      tipRate = 0.15
+    }
+    else {
+      tipRate = 0.2
+    }
+      tips.push(Math.round(amount[i] * tipRate))
+      amountWithTips.push(Math.round(amount[i] * (tipRate + 1)))
+  }
+    return [tips, amountWithTips]
+}
+
+console.log(calculateTips([124, 48, 268]))
+  </script>
+</html>
