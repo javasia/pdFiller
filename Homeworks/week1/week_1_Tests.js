@@ -6,21 +6,6 @@ describe(`difference`, () => {
   );
 });
 
-console.log(
-  groupBy([
-    { gender: 'male', name: 'Max' },
-    { gender: 'male', name: 'Fred' },
-    { gender: 'female', name: 'Jane' }
-  ], 'gender')
-);
-
-console.log(
-  {
-    male: [{ gender: 'male', name: 'Max' }, { gender: 'male', name: 'Fred' }],
-    female: [{ gender: 'female', name: 'Jane' }]
-  }
-);
-
 describe(`groupBy`, () => {
   it(`input: [
     { gender: 'male', name: 'Max'}, 
@@ -81,7 +66,7 @@ describe(`chunk`, () => {
   it(`input: ['a', 'b', 'c', 'd', 'e', 'f', 'g'], 0 => []`,
     () => assert.deepEqual(chunk(['a', 'b', 'c', 'd'], 0), [])
   );
-  it(`input: ['a', 'b', 'c', 'd', 'e', 'f', 'g'], 1 => [['a'], ['b'], ['c'], ['d'], ['e'], ['f'], ['g']`,
+  it(`input: ['a', 'b', 'c', 'd', 'e', 'f', 'g'], 1 => [['a'], ['b'], ['c'], ['d'], ['e'], ['f'], ['g']]`,
     () => assert.deepEqual(chunk(['a', 'b', 'c', 'd', 'e', 'f', 'g'], 1), [['a'], ['b'], ['c'], ['d'], ['e'], ['f'], ['g']])
   );
 });
