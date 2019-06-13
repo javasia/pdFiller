@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>new VS Object.create()</title>
+<script type="text/javascript">
+
+//==============
+console.log('constructor function ')
+//==============
+
+function ProtoCar() {
+	this.color = 'green';
+}
+
+ProtoCar.prototype.drive = function () {
+	console.log('Vroom!');
+  	console.log(this.color);
+}
+
+const car1 = new ProtoCar();
+
+console.log(car1);
+car1.drive();
+
+//==============
+console.log('Object.create() AKA factory')
+//==============
+
+let protoCar = {
+	drive() {
+  		console.log('Vroom!');
+  		console.log(this.color);
+    }
+}
+
+const car2 = Object.create(protoCar);
+car2.color = 'green';
+console.log(car2);
+car2.drive();
+
+//==============
+console.log('something in between for some odd reason')
+//==============
+const car3 = Object.create(new ProtoCar());
+console.log(car3);
+car3.drive();
+
+
+// analysis
+function logAllKeys (obj) {
+	for (key in obj) console.log(key);
+}
+
+function logOwnKeys (obj) {
+	for (key in obj) {
+		if (obj.hasOwnProperty(key)) {
+			console.log(key);
+		}
+	}	
+}
+console.log('constructor logAllKeys');
+logAllKeys(car1);
+console.log('factory logAllKeys');
+logAllKeys(car2);
+console.log('constructor logOwnKeys');
+logOwnKeys(car1);
+console.log('factory logOwnKeys');
+logOwnKeys(car2);
+console.log('factory+constructor logAllKeys');
+logAllKeys(car3);
+console.log('factory+constructor logOwnKeys');
+logOwnKeys(car3);
+
+</script>
+</head>
+<body></body>
+</html>
